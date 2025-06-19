@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthTrack Lite | Patient Monitoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> HealthTrack </h1>
+            <p>AI-powered patient monitoring</p>
+        </header>
+
+        <!-- Welcome Screen -->
+        <div class="welcome-card" id="welcomeScreen">
+            <h2><i class="fas fa-user-plus"></i> Enter Patient Details</h2>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="patientNameInput" placeholder="Patient Name" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-birthday-cake"></i>
+                <input type="number" id="patientAgeInput" placeholder="Age" required min="1" max="120">
+            </div>
+            <button class="btn" id="enterBtn">
+                <i class="fas fa-sign-in-alt"></i> Enter Dashboard
+            </button>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="dashboard" id="dashboard">
+            <div class="card">
+                <h2><i class="fas fa-user-injured"></i> Patient Overview</h2>
+                <div class="grid">
+                    <div class="vital-card">
+                        <div class="vital-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div class="vital-info">
+                            <h3>Patient Name</h3>
+                            <p class="vital-value" id="displayName">--</p>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <div class="vital-info">
+                            <h3>Age</h3>
+                            <p class="vital-value" id="displayAge">--</p>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-icon">
+                            <i class="fas fa-disease"></i>
+                        </div>
+                        <div class="vital-info">
+                            <h3>Current Condition</h3>
+                            <p class="vital-value" id="disease">None</p>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <div class="vital-info">
+                            <h3>Medication</h3>
+                            <p class="vital-value" id="currentMeds">None</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-heartbeat"></i> Live Vitals Monitoring</h2>
+                <div class="simulation-notice">
+                    <i class="fas fa-info-circle"></i> Currently showing simulated data (not connected to real devices)
+                </div>
+                <div class="grid">
+                    <div class="vital-card">
+                        <div class="vital-icon bp-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="vital-info">
+                            <h3>Blood Pressure</h3>
+                            <p class="vital-value" id="bp">120/80 mmHg</p>
+                            <p class="vital-time" id="bpTime">--</p>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-icon temp-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="vital-info">
+                            <h3>Temperature</h3>
+                            <p class="vital-value" id="temp">98.6°F</p>
+                            <p class="vital-time" id="tempTime">--</p>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-icon pulse-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="vital-info">
+                            <h3>Pulse Rate</h3>
+                            <p class="vital-value" id="pulse">72 bpm</p>
+                            <p class="vital-time" id="pulseTime">--</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="vitalChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-diagnoses"></i> Report New Condition</h2>
+                <div class="input-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="diseaseInput" placeholder="e.g., Hypertension, Diabetes, Migraine">
+                </div>
+                <button class="btn" id="submitCondition">
+                    <i class="fas fa-paper-plane"></i> Get Treatment Recommendation
+                </button>
+                <div id="ageBasedNotice" style="margin-top: 15px; font-size: 14px; color: #6c757d; display: none;">
+                    <i class="fas fa-info-circle"></i> <span id="ageNoticeText"></span>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h2><i class="fas fa-history"></i> Medical History</h2>
+                    <ul id="historyList">
+                        <li class="history-item">
+                            <span>No history yet</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2><i class="fas fa-bell"></i> Health Alerts</h2>
+                    <div id="alertList">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> System ready. No alerts currently.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 HealthTrack | Work by Sai Vardhan</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
