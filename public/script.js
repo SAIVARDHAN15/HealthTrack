@@ -74,7 +74,7 @@ submitCondition.addEventListener('click', async () => {
 // Age-based medication recommendations (unchanged)
 async function getAgeBasedRecommendation(disease, age) {
     // Gemini API key
-    const apiKey = "AIzaSyBT0k0GWeOWu1Vl9Qwl51Mye3h3sKJAfaI";
+    const apiKey = "Replace with you own API key";
     
     try {
         const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
